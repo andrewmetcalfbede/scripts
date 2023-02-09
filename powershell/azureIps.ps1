@@ -13,7 +13,7 @@ function Get-AzureIps {
   try {
     $serviceTags = Get-AzNetworkServiceTag -Location $location
     $serviceName = $service+ "." +$location
-    $serviceTag  = $serviceTags.Values | Where-Object { $_.Name -eq $serviceName } # Get 
+    $serviceTag  = $serviceTags.Values | Where-Object { $_.Name -eq $serviceName }
     $ipAddresses = $serviceTag.Properties.AddressPrefixes | Where-Object { $_ -notmatch ':' }
     return $ipAddresses
     Write-Output $ipAddresses
